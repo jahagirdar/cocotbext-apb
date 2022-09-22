@@ -394,7 +394,7 @@ class APBMasterDriver(BusDriver):
                 pstrb_int = 0
                 for i, pstrb_i in enumerate(current_transaction.strobe):
                     pstrb_int += pstrb_i << i
-                self.bus.PSTRB.value = pstrb_int
+                #self.bus.PSTRB.value = pstrb_int
 
                 # write the data to the bus
                 if current_transaction.direction == 'WRITE':
