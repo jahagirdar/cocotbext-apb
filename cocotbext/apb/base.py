@@ -419,7 +419,7 @@ class APBMasterDriver(BusDriver):
                 if self.bus.PREADY.value.integer:
 
                     # check if the slave is asserting an error
-                    if hasattr(bus,'PSLVERR') and self.bus.PSLVERR.value.integer:
+                    if hasattr(self.bus,'PSLVERR') and self.bus.PSLVERR.value.integer:
                         current_transaction.error = True
 
                     # if this is a read we should sample the data
