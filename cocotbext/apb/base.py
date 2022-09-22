@@ -324,7 +324,7 @@ class APBMasterDriver(BusDriver):
         self.bus.PSEL.setimmediatevalue(0)
         self.bus.PENABLE.setimmediatevalue(0)
         self.bus.PWDATA.setimmediatevalue(0)
-        self.bus.PSTRB.setimmediatevalue(0)
+        #self.bus.PSTRB.setimmediatevalue(0)
 
         self.reset()
 
