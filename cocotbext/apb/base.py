@@ -261,7 +261,7 @@ class APBMonitor(BusMonitor):
                 transaction.start_time = cocotb.utils.get_sim_time('ns')
 
                 # find out if there's an error from the slave
-                if hasattr(bus,'PSLVERR') and self.bus.PSLVERR.value.integer:
+                if hasattr(self.bus,'PSLVERR') and self.bus.PSLVERR.value.integer:
                     transaction.error = True
 
                 # signal to the callback
