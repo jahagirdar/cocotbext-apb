@@ -261,7 +261,7 @@ class APBMonitor(BusMonitor):
                 transaction.start_time = cocotb.utils.get_sim_time('ns')
 
                 # find out if there's an error from the slave
-                if hasattr(bus,'PSLVERR') and self.bus.PSLVERR.value.integer:
+                if hasattr(self.bus,'PSLVERR') and self.bus.PSLVERR.value.integer:
                     transaction.error = True
 
                 # signal to the callback
@@ -324,7 +324,7 @@ class APBMasterDriver(BusDriver):
         self.bus.PSEL.setimmediatevalue(0)
         self.bus.PENABLE.setimmediatevalue(0)
         self.bus.PWDATA.setimmediatevalue(0)
-        self.bus.PSTRB.setimmediatevalue(0)
+        #self.bus.PSTRB.setimmediatevalue(0)
 
         self.reset()
 
@@ -394,7 +394,7 @@ class APBMasterDriver(BusDriver):
                 pstrb_int = 0
                 for i, pstrb_i in enumerate(current_transaction.strobe):
                     pstrb_int += pstrb_i << i
-                self.bus.PSTRB.value = pstrb_int
+                #self.bus.PSTRB.value = pstrb_int
 
                 # write the data to the bus
                 if current_transaction.direction == 'WRITE':
@@ -419,7 +419,7 @@ class APBMasterDriver(BusDriver):
                 if self.bus.PREADY.value.integer:
 
                     # check if the slave is asserting an error
-                    if hasattr(bus,'PSLVERR') and self.bus.PSLVERR.value.integer:
+                    if hasattr(self.bus,'PSLVERR') and self.bus.PSLVERR.value.integer:
                         current_transaction.error = True
 
                     # if this is a read we should sample the data
